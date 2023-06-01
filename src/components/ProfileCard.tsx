@@ -51,11 +51,15 @@ export default function ProfileCard({USER_INFO}:{
 }
 }) {
     console.log(USER_INFO, "Components")
+    USER_INFO.image.startsWith('http') ? console.log("true") : console.log("false");
     return (
         (
             <div className="card max-w-lg w-full">
             <div className="overflow-hidden max-w-[40%] mx-auto z-10 block relative rounded-full border-8 border-gray-400">
-                <Image src={USER_INFO.image} alt="profile" width={500} height={500}/>
+                {
+                    USER_INFO.image.startsWith('http') ? (<img src={USER_INFO.image} width={500} height={500} />) : <Image src={`${USER_INFO.image}`} alt={USER_INFO.name} width={500} height={500} className="rounded-full" />
+                }
+
             </div>
             <div className="relative px-4 -mt-24">
                 <div className="bg-white p-6 rounded-lg shadow-lg pt-28">
